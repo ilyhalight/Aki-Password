@@ -187,20 +187,17 @@ class Ui_Aki_main(object):
 "QTableWidget::item:selected{\n"
 "    background-color: transparent;\n"
 "}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: transparent;\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"    border-radius: 0px;\n"
-"}\n"
 " QScrollBar:vertical {\n"
 "    border: none;\n"
-"    background: #fff;\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
+"    background: white;\n"
+"    width: 8px;\n"
+"    margin: 0px 0 0px 0;\n"
 "    border-radius: 0px;\n"
 " }\n"
+"QScrollBar::handle:vertical {\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0.511364, x2:1,y2:0.523, stop:0 rgba(245, 112, 147, 255), stop:1 rgba(230, 52, 98, 255));\n"
+"    min-height: 0px;\n"
+"}\n"
 "QHeaderView::section{\n"
 "    Background-color: transparent;\n"
 "    max-width: 30px;\n"
@@ -288,17 +285,17 @@ class Ui_Aki_main(object):
         self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
         self.tableWidget.verticalHeader().setHighlightSections(False)
         self.tableWidget.verticalHeader().setStretchLastSection(True)
-        self.btn_copy_pass = QtWidgets.QPushButton(self.frame_3)
-        self.btn_copy_pass.setGeometry(QtCore.QRect(560, 30, 21, 21))
-        self.btn_copy_pass.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_copy_pass.setStyleSheet("QPushButton {\n"
+        self.btn_copy_data = QtWidgets.QPushButton(self.frame_3)
+        self.btn_copy_data.setGeometry(QtCore.QRect(560, 30, 21, 21))
+        self.btn_copy_data.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_copy_data.setStyleSheet("QPushButton {\n"
 "    background: transparent\n"
 "}")
-        self.btn_copy_pass.setText("")
+        self.btn_copy_data.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("icons/aki_copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_copy_pass.setIcon(icon2)
-        self.btn_copy_pass.setObjectName("btn_copy_pass")
+        self.btn_copy_data.setIcon(icon2)
+        self.btn_copy_data.setObjectName("btn_copy_data")
         self.btn_delete_user = QtWidgets.QPushButton(self.frame_3)
         self.btn_delete_user.setGeometry(QtCore.QRect(590, 30, 21, 21))
         self.btn_delete_user.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
