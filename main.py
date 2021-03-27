@@ -84,10 +84,17 @@ class SignWindow(QMainWindow):
         self.setWindowTitle('Aki Password')
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
+        # HIDE ELEMENTS
+        self.ui.notifications_terms_of_use_close.setIcon(QtGui.QIcon("ui/icons/aki_close_notify.png"))
+        self.ui.notifications_close.setIcon(QtGui.QIcon("ui/icons/aki_close_notify.png"))
+        self.ui.notifications_main_background.hide()
+        self.ui.notifications_terms_of_use_background.hide()
+        self.ui.notifications_dark_background.hide()
+
+        # WIDGETS
         self.ui.sign_stackedWidget.setCurrentWidget(self.ui.auth_page)
 
         # MAIN FRAME
-
         self.ui.img_logo.setIcon(QtGui.QIcon("ui/icons/aki_logo.png"))
         self.ui.btn_close.setIcon(QtGui.QIcon("ui/icons/aki_close.png"))
         self.ui.aki_copyright.setText("Aki © 2021 Все права защищены")
@@ -99,7 +106,6 @@ class SignWindow(QMainWindow):
         self.ui.reg_pass_img2.setIcon(QtGui.QIcon("ui/icons/aki_password.png"))
 
         # AUTH FRAME
-
         self.ui.auth_login_img.setIcon(QtGui.QIcon("ui/icons/aki_user.png"))
         self.ui.auth_pass_img.setIcon(QtGui.QIcon("ui/icons/aki_password.png"))
 
@@ -109,6 +115,11 @@ class SignWindow(QMainWindow):
         self.ui.auth_reg_btn.clicked.connect(self.move_to_register)
         self.ui.auth_sign.clicked.connect(self.authorize)
         self.ui.reg_sign.clicked.connect(self.registration)
+        self.ui.notifications_close.clicked.connect(self.notify_close)
+        self.ui.notifications_terms_of_use_close.clicked.connect(self.notify_terms_close)
+        self.ui.reg_conditions.clicked.connect(self.terms_of_use_show)
+        self.ui.reg_terms_of_use.clicked.connect(self.terms_of_use_show)
+        self.ui.reg_terms_of_use2.clicked.connect(self.terms_of_use_show)
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
@@ -129,7 +140,7 @@ class SignWindow(QMainWindow):
         auth_pass = self.ui.auth_pass.text()
         global authorized
         if len(auth_pass) < 5 or len(auth_login) < 4 or len(auth_login) > 20 or auth_login == '' or auth_pass == '':
-            print('Неверный логин или пароль.')
+            self.warn_notifications('Неверный логин или пароль.')
         else:
             sql = f"SELECT password FROM aki_accounts WHERE login = '{auth_login}'"
             try:
@@ -139,8 +150,6 @@ class SignWindow(QMainWindow):
                     pass_sql = row[0]
                     if auth_pass == pass_sql:
                         authorized == 1
-                        print('Вы успешно авторизовались.')
-
                         # SHOW MAIN WINDOW
                         self.main = MainWindow()
                         self.main.show()
@@ -148,33 +157,76 @@ class SignWindow(QMainWindow):
                         # CLOSE SIGN WINDOW
                         self.close()
                     else:
-                        print('Неправильный логин или пароль.')
+                        self.warn_notifications('Неверный логин или пароль.')
 
             except:
                 connection.rollback()
-                print('Unknown Error')
+                self.warn_notifications('Произошла неизвестная ошибка.')
 
     def registration(self):
         reg_login = self.ui.reg_login.text()
         reg_email = self.ui.reg_email.text()
         reg_pass = self.ui.reg_pass.text()
         reg_pass_2 = self.ui.reg_pass_2.text()
-        if len(reg_pass) <= 4 or len(reg_login) < 4:
-            print('Введенный логин или пароль слишком короткий.')
+        if len(reg_pass) <= 4:
+            self.warn_notifications('Введенный пароль слишком короткий.')
+        elif len(reg_login) < 4:
+            self.warn_notifications('Введенный логин слишком короткий.')
         elif len(reg_login) > 20:
-            print('Введенный логин не может быть больше 20 символов.')
+            self.warn_notifications('Введенный логин не может быть больше 20 символов.')
         elif reg_pass != reg_pass_2:
-            print('Введенные пароли не совпадают.')
+            self.warn_notifications('Введенные пароли не совпадают.')
         else:
-            sql = "INSERT INTO `aki_accounts` (`login`, `password`, `email`) VALUES (%s, %s, %s)"
-            try:
-                cursor.execute(sql, (f'{reg_login}', f'{reg_pass}', f'{reg_email}'))
-                connection.commit()
-                self.move_to_auth()
-            except:
-                connection.rollback()
-                print('Unknown Error')
+            if self.ui.reg_terms_of_use_check.isChecked():
+                if '@' in reg_email:
+                    sql = "INSERT INTO aki_accounts (login, password, email) VALUES (%s, %s, %s)"
+                    try:
+                        cursor.execute(sql, (f'{reg_login}', f'{reg_pass}', f'{reg_email}'))
+                        connection.commit()
+                        self.notifications('Успех.', 'Вы успешно зарегистрировались')
+                        self.move_to_auth()
+                    except:
+                        connection.rollback()
+                        self.warn_notifications('Произошла неизвестная ошибка.')
+                else:
+                    self.warn_notifications('Укажите ваш реальный E-mail.')
+            else:
+                self.warn_notifications('Для продолжения необходимо согласиться с условиями и политикой конфеденциальности.')
 
+    def warn_notifications(self, text = "Произошла серверная ошибка. Попробуйте ещё раз"):
+        self.ui.notifications_dark_background.show()
+        self.ui.notifications_main_background.show()
+        self.ui.notifications_up.setStyleSheet("QFrame {\n"
+"    background-color: rgb(230, 52, 98);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.ui.notifications_oops_text.setText('Упс! Мы столкнулись с некоторыми проблемами.')
+        self.ui.notifications_text.setText(text)
+
+    def notifications(self, text = 'Тестовое уведомление', message = "Вы успешно получили уведомление"):
+        self.ui.notifications_dark_background.show()
+        self.ui.notifications_main_background.show()
+        self.ui.notifications_up.setStyleSheet("QFrame {\n"
+"    background-color: rgb(95, 229, 50);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.ui.notifications_oops_text.setText(text)
+        self.ui.notifications_text.setText(message)
+
+
+    def notify_close(self):
+        self.ui.notifications_dark_background.hide()
+        self.ui.notifications_main_background.hide()
+
+    def notify_terms_close(self):
+        self.ui.notifications_dark_background.hide()
+        self.ui.notifications_terms_of_use_background.hide()
+
+    def terms_of_use_show(self):
+        self.ui.notifications_dark_background.show()
+        self.ui.notifications_terms_of_use_background.show()
 
 # MAIN WINDOW
 class MainWindow(QMainWindow):
@@ -203,6 +255,11 @@ class MainWindow(QMainWindow):
         self.ui.btn_close.setIcon(QtGui.QIcon("ui/icons/aki_close.png"))
         self.ui.main_window_copyright.setText("Aki © 2021 Все права защищены")
 
+        self.ui.btn_delete_user.setIcon(QtGui.QIcon("ui/icons/aki_delete.png"))
+        self.ui.btn_copy_data.setIcon(QtGui.QIcon("ui/icons/aki_copy.png"))
+
+        self.ui.frame.hide()
+
         item = self.ui.tableWidget.item(0, 0)
         item.setText('Sitename')
         item = self.ui.tableWidget.item(0, 1)
@@ -212,11 +269,8 @@ class MainWindow(QMainWindow):
 
         # UI FUNCTIONS
         self.ui.btn_close.clicked.connect(self.minimize)
-
         self.ui.reg_cancel.clicked.connect(self.hide_reg)
-
         self.ui.btn_add_user.clicked.connect(self.open_reg)
-
         self.ui.reg_sign.clicked.connect(self.add_user_to_table)
 
     def add_user_to_table(self):
