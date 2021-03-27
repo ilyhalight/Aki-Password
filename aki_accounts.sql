@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `r6236_aki_password_manager`
+-- База данных: `aki_password_manager`
 --
 
 -- --------------------------------------------------------
