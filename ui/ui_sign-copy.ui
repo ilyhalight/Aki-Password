@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Aki_sign</class>
+ <widget class="QMainWindow" name="Aki_sign">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>961</width>
+    <height>578</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	border: none;
+	border-radius: 25px
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="background_main">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>941</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	background-color:rgb(24, 24, 24);
+	color:rgb(177, 177, 177);
+	border-radius:  20px;
+	border: None
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="poloska">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>50</y>
+       <width>941</width>
+       <height>1</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+	background-color:rgb(33, 33, 33);
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_close">
+     <property name="geometry">
+      <rect>
+       <x>910</x>
+       <y>15</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background: transparent
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icons/aki_close.png</normaloff>icons/aki_close.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>13</width>
+       <height>13</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="img_logo">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>15</y>
+       <width>24</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background: transparent
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icons/aki_logo.png</normaloff>icons/aki_logo.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>18</width>
+       <height>18</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="logo_text">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>20</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Acrom</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: #fff
+}</string>
+     </property>
+     <property name="text">
+      <string>AkiReworked</string>
+     </property>
+    </widget>
+    <widget class="QStackedWidget" name="stackedWidget_sign">
+     <property name="geometry">
+      <rect>
+       <x>325</x>
+       <y>70</y>
+       <width>305</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="auth_page">
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+	background: transparent
+}</string>
+      </property>
+      <widget class="QFrame" name="auth_frame">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>60</y>
+         <width>305</width>
+         <height>331</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame {
+	background-color: rgb(19, 19, 19);
+	border:  None;
+	border-radius: 10px
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="auth_text">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <stylestrategy>PreferDefault</stylestrategy>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #fff
+}</string>
+        </property>
+        <property name="text">
+         <string>Авторизация</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="auth_login">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>70</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    padding: 45px;
+	border: none;
+	background-color: #0e0e0e;
+	border-radius: 7px;
+	color: #fff
+}</string>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Имя пользователя</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="auth_pass">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>130</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    padding: 45px;
+	border: none;
+	background-color: #0e0e0e;
+	border-radius: 7px;
+	color: #fff
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Пароль</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="remember_me">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>178</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>8</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox {
+	border : None;
+	border-radius: 50%;
+	color: #fff;
+}
+
+QCheckBox::indicator {
+	border: 3px solid rgb(149, 158, 201);
+	width: 11px;
+	height: 11px;
+	border-radius : 8px;
+	background: rgb(19, 19, 19);
+}
+
+QCheckBox::indicator:checked { 
+	background: 3px solid rgb(230, 52, 98);
+	border: 3px solid rgb(230, 52, 98);
+	background-image: url(:/16x16/icons/aki_check.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Запомнить меня</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="forgot_pass">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>178</y>
+          <width>111</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: rgb(108, 109,112);
+}</string>
+        </property>
+        <property name="text">
+         <string>Забыли пароль?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="not_account">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>300</y>
+          <width>91</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #fff;
+}</string>
+        </property>
+        <property name="text">
+         <string>Нет аккаунта?</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="auth_reg_btn">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>300</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: rgb(230, 52, 98);
+}</string>
+        </property>
+        <property name="text">
+         <string>Зарегистрироваться</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="auth_sign">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>230</y>
+          <width>261</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: #fff;
+	border: none;
+	border-radius: 12.5px;
+	background-color: rgb(230, 52, 98)
+}</string>
+        </property>
+        <property name="text">
+         <string>Войти</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="auth_login_img">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>75</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(230, 52, 98);
+	border-radius: 5px
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_user.png</normaloff>icons/aki_user.png</iconset>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="auth_pass_img">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>135</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(230, 52, 98);
+	border-radius: 5px
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_password.png</normaloff>icons/aki_password.png</iconset>
+        </property>
+       </widget>
+       <zorder>not_account</zorder>
+       <zorder>auth_text</zorder>
+       <zorder>auth_login</zorder>
+       <zorder>auth_pass</zorder>
+       <zorder>remember_me</zorder>
+       <zorder>forgot_pass</zorder>
+       <zorder>auth_reg_btn</zorder>
+       <zorder>auth_sign</zorder>
+       <zorder>auth_login_img</zorder>
+       <zorder>auth_pass_img</zorder>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="register_page">
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+	background: transparent
+}</string>
+      </property>
+      <widget class="QFrame" name="reg_frame">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>301</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame {
+	background-color: rgb(19, 19, 19);
+	border:  None;
+	border-radius: 10px
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QCheckBox" name="reg_terms_of_use_check">
+        <property name="geometry">
+         <rect>
+          <x>15</x>
+          <y>308</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>8</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox {
+	border : None;
+	border-radius: 50%;
+	color: #fff;
+}
+
+QCheckBox::indicator {
+	border: 3px solid rgb(149, 158, 201);
+	width: 11px;
+	height: 11px;
+	border-radius : 8px;
+	background: rgb(19, 19, 19);
+}
+
+QCheckBox::indicator:checked { 
+	background: 3px solid rgb(230, 52, 98);
+	border: 3px solid rgb(230, 52, 98);
+	background-image: url(:/16x16/icons/aki_check.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Я согласен(на) с</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="have_account">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>410</y>
+          <width>120</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #fff;
+}</string>
+        </property>
+        <property name="text">
+         <string>Уже есть аккаунта?</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="reg_login">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>70</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    padding: 45px;
+	border: none;
+	background-color: #0e0e0e;
+	border-radius: 7px;
+	color: #fff
+}</string>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Имя пользователя</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_email_img">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>135</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(230, 52, 98);
+	border-radius: 5px
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_email.png</normaloff>icons/aki_email.png</iconset>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_login_img">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>75</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(230, 52, 98);
+	border-radius: 5px
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_user.png</normaloff>icons/aki_user.png</iconset>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="reg_email">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>130</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    padding: 45px;
+	border: none;
+	background-color: #0e0e0e;
+	border-radius: 7px;
+	color: #fff
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>E-mail</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_auth_btn">
+        <property name="geometry">
+         <rect>
+          <x>185</x>
+          <y>410</y>
+          <width>41</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: rgb(230, 52, 98);
+}</string>
+        </property>
+        <property name="text">
+         <string>Войти</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_sign">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>350</y>
+          <width>261</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: #fff;
+	border: none;
+	border-radius: 12.5px;
+	background-color: rgb(230, 52, 98)
+}</string>
+        </property>
+        <property name="text">
+         <string>Зарегистрироваться</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="reg_text">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <stylestrategy>PreferDefault</stylestrategy>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #fff
+}</string>
+        </property>
+        <property name="text">
+         <string>Регистрация</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_conditions">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>310</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>8</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: rgb(230, 52, 98);
+}</string>
+        </property>
+        <property name="text">
+         <string>условиями</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="reg_terms_of_text2">
+        <property name="geometry">
+         <rect>
+          <x>198</x>
+          <y>308</y>
+          <width>16</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #fff;
+}</string>
+        </property>
+        <property name="text">
+         <string>и</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_terms_of_use">
+        <property name="geometry">
+         <rect>
+          <x>203</x>
+          <y>310</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>8</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: rgb(230, 52, 98);
+}</string>
+        </property>
+        <property name="text">
+         <string>политикой</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_terms_of_use2">
+        <property name="geometry">
+         <rect>
+          <x>36</x>
+          <y>324</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>8</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	color: rgb(230, 52, 98);
+}</string>
+        </property>
+        <property name="text">
+         <string>конфеденциальности.</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="reg_pass">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>190</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    padding: 45px;
+	border: none;
+	background-color: #0e0e0e;
+	border-radius: 7px;
+	color: #fff
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Пароль</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_pass_img">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>195</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(230, 52, 98);
+	border-radius: 5px
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_password.png</normaloff>icons/aki_password.png</iconset>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="reg_pass_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>250</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    padding: 45px;
+	border: none;
+	background-color: #0e0e0e;
+	border-radius: 7px;
+	color: #fff
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Повторите пароль</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="reg_pass_img2">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>255</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(230, 52, 98);
+	border-radius: 5px
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_password.png</normaloff>icons/aki_password.png</iconset>
+        </property>
+       </widget>
+       <zorder>reg_terms_of_use_check</zorder>
+       <zorder>have_account</zorder>
+       <zorder>reg_login</zorder>
+       <zorder>reg_login_img</zorder>
+       <zorder>reg_email</zorder>
+       <zorder>reg_auth_btn</zorder>
+       <zorder>reg_sign</zorder>
+       <zorder>reg_text</zorder>
+       <zorder>reg_conditions</zorder>
+       <zorder>reg_terms_of_text2</zorder>
+       <zorder>reg_terms_of_use</zorder>
+       <zorder>reg_terms_of_use2</zorder>
+       <zorder>reg_email_img</zorder>
+       <zorder>reg_pass</zorder>
+       <zorder>reg_pass_img</zorder>
+       <zorder>reg_pass_2</zorder>
+       <zorder>reg_pass_img2</zorder>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="aki_copyright">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>530</y>
+       <width>851</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Aki © 2021 Все права защищены</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QFrame" name="notifications_dark_background">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>941</width>
+       <height>561</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+	background-color:rgba(24, 24, 24, 0.7);
+	color:rgb(177, 177, 177);
+	border-radius:  20px
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QFrame" name="notifications_main_background">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>741</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+	background-color: rgb(32, 32, 32);
+	border:  None;
+	border-radius: 10px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QFrame" name="notifications_red_up">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>741</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame {
+	background-color: rgb(230, 52, 98);
+	border:  None;
+	border-radius: 10px;
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="notifications_oops_text">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>5</y>
+          <width>731</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Acrom</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: #fff;
+}</string>
+        </property>
+        <property name="text">
+         <string>Упс! Мы столкнулись с некоторыми проблемами.</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="notifications_close">
+        <property name="geometry">
+         <rect>
+          <x>715</x>
+          <y>10</y>
+          <width>16</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background: transparent
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/aki_close_notify.png</normaloff>icons/aki_close_notify.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>13</width>
+          <height>13</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="notifications_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>58</y>
+         <width>721</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Acrom</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вы не прошли проверку CAPTCHA должным образом. Пожалуйста, попробуйте ещё раз.</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="notifications_terms_of_use_background">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>741</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+	background-color: rgb(32, 32, 32);
+	border:  None;
+	border-radius: 10px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="notifications_terms_of_use_heading">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>731</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Acrom</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	color: #fff;
+}</string>
+       </property>
+       <property name="text">
+        <string>Наши условия и поликита конфеденциальности</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="notifications_trerms_of_use_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>715</width>
+         <height>411</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit {
+	padding: 5px
+}
+
+QScrollBar:vertical {              
+    border: none;
+    background: white;
+	border-radius: 0px;
+    width: 8px;           
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background: qlineargradient(spread:pad, x1:0, y1:0.511364, x2:1,y2:0.523, stop:0 rgba(245, 112, 147, 255), stop:1 rgba(230, 52, 98, 255));
+    min-height: 0px;
+}</string>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Ваша конфиденциальность важна для нас.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Эта политика конфиденциальности объясняет, какие персональные данные собирает и обрабатывает наше приложение &amp;quot;Aki Passwords&amp;quot;, как они обрабатываются и для каких целей они собираются и обрабатываются&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Какую информацию о вас мы собираем.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Типы данных, которые мы собираем и обрабатываем включают в себя следующее:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          1.Ваш никнейм в приложение.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          2.Ваш адрес электронной почты.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          3.Ваш IP-адрес.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Мы собираем некоторую или всю эту информацию в следующих случаях:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          1.Вы регистрируетесь как пользователь в нашем приложение&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          2.Вы используете это приложение.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Как используется Ваша личная информация.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Мы можем использовать Вашу личную информацию в следующих целях:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          1.Для того, чтобы сделать Вас зарегистрированным пользователем нашего приложения, чтобы Вы могли добавлять в него контент.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          2.Мы можем использовать Ваш адрес электронной почты, чтобы информировать Вас об активности в нашем приложение.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;          3.Ваш IP-адрес записывается при выполнении определённых действий в нашем приложение. Он никогда не отображается публично.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Обеспечение безопасности данных&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Мы стремимся обеспечить безопасность любой информации, которую Вы нам предоставляете.Чтобы предотвратить несанкционированный доступ или раскрытие информации, мы добавили подходящие меры и процедуры для защиты и обеспечения безопасности информации,которую мы собираем.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Принятие политики&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Дальнейшее использование нашего приложения означает Ваше полное согласие с этой политикой. Если Вы не согласны с нашей политикой, то пожалуйста, не используйте данное приложение. При регистрации мы также запросим Ваше явное согласие с политикой конфиденциальности.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Изменения в политике&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Мы можем вносить изменения в данную политику в любое время. Вам может быть предложено ознакомиться и повторно принять информацию в этой политике, если она изменится в будущем.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="notifications_close_3">
+       <property name="geometry">
+        <rect>
+         <x>708</x>
+         <y>10</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background: transparent
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>icons/aki_close_notify.png</normaloff>icons/aki_close_notify.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>13</width>
+         <height>13</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
