@@ -31,7 +31,7 @@ elif is_config_exists == False:
     logger.info('Создаём файл конфигурации...')
     with open(path_config, 'a') as config_file:
         logger.info('Записываем базовые значения в файл конфигурации')
-        config_file.write('{"db_host" : "localhost", "db_user" : "root", "db_password" : " ", "db_name" : "password_manager"}')
+        config_file.write('{"db_host" : "localhost", "db_user" : "root", "db_password" : " ", "db_name" : "aki_accounts"}')
         logger.success('Файл конфигурации был успешно создан')
         config_file.close()
 
