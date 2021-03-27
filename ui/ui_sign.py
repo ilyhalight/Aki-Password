@@ -514,6 +514,119 @@ class Ui_Aki_sign(object):
         self.aki_copyright.setStyleSheet("")
         self.aki_copyright.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.aki_copyright.setObjectName("aki_copyright")
+        self.notifications_dark_background = QtWidgets.QFrame(self.background_main)
+        self.notifications_dark_background.setGeometry(QtCore.QRect(0, 0, 941, 561))
+        self.notifications_dark_background.setStyleSheet("QFrame {\n"
+"    background-color:rgba(24, 24, 24, 0.7);\n"
+"    color:rgb(177, 177, 177);\n"
+"    border-radius:  20px\n"
+"}")
+        self.notifications_dark_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_dark_background.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_dark_background.setObjectName("notifications_dark_background")
+        self.notifications_main_background = QtWidgets.QFrame(self.notifications_dark_background)
+        self.notifications_main_background.setGeometry(QtCore.QRect(100, 60, 741, 81))
+        self.notifications_main_background.setStyleSheet("QFrame {\n"
+"    background-color: rgb(32, 32, 32);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.notifications_main_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_main_background.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_main_background.setObjectName("notifications_main_background")
+        self.notifications_up = QtWidgets.QFrame(self.notifications_main_background)
+        self.notifications_up.setGeometry(QtCore.QRect(0, 0, 741, 51))
+        self.notifications_up.setStyleSheet("QFrame {\n"
+"    background-color: rgb(230, 52, 98);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.notifications_up.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_up.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_up.setObjectName("notifications_up")
+        self.notifications_oops_text = QtWidgets.QLabel(self.notifications_up)
+        self.notifications_oops_text.setGeometry(QtCore.QRect(10, 5, 731, 41))
+        font = QtGui.QFont()
+        font.setFamily("Acrom")
+        font.setPointSize(18)
+        self.notifications_oops_text.setFont(font)
+        self.notifications_oops_text.setStyleSheet("QLabel {\n"
+"    color: #fff;\n"
+"}")
+        self.notifications_oops_text.setObjectName("notifications_oops_text")
+        self.notifications_close = QtWidgets.QPushButton(self.notifications_up)
+        self.notifications_close.setGeometry(QtCore.QRect(715, 10, 16, 16))
+        self.notifications_close.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.notifications_close.setStyleSheet("QPushButton {\n"
+"    background: transparent\n"
+"}")
+        self.notifications_close.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icons/aki_close_notify.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.notifications_close.setIcon(icon5)
+        self.notifications_close.setIconSize(QtCore.QSize(13, 13))
+        self.notifications_close.setObjectName("notifications_close")
+        self.notifications_text = QtWidgets.QLabel(self.notifications_main_background)
+        self.notifications_text.setGeometry(QtCore.QRect(10, 58, 721, 16))
+        self.notifications_text.setStyleSheet("QLabel {\n"
+"    color: #fff\n"
+"}")
+        font = QtGui.QFont()
+        font.setFamily("Acrom")
+        font.setPointSize(10)
+        self.notifications_text.setFont(font)
+        self.notifications_text.setObjectName("notifications_text")
+        self.notifications_terms_of_use_background = QtWidgets.QFrame(self.notifications_dark_background)
+        self.notifications_terms_of_use_background.setGeometry(QtCore.QRect(100, 60, 741, 461))
+        self.notifications_terms_of_use_background.setStyleSheet("QFrame {\n"
+"    background-color: rgb(32, 32, 32);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.notifications_terms_of_use_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_terms_of_use_background.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_terms_of_use_background.setObjectName("notifications_terms_of_use_background")
+        self.notifications_terms_of_use_heading = QtWidgets.QLabel(self.notifications_terms_of_use_background)
+        self.notifications_terms_of_use_heading.setGeometry(QtCore.QRect(0, 0, 731, 41))
+        font = QtGui.QFont()
+        font.setFamily("Acrom")
+        font.setPointSize(18)
+        self.notifications_terms_of_use_heading.setFont(font)
+        self.notifications_terms_of_use_heading.setStyleSheet("QLabel {\n"
+"    color: #fff;\n"
+"}")
+        self.notifications_terms_of_use_heading.setAlignment(QtCore.Qt.AlignCenter)
+        self.notifications_terms_of_use_heading.setObjectName("notifications_terms_of_use_heading")
+        self.notifications_terms_of_use_text = QtWidgets.QTextEdit(self.notifications_terms_of_use_background)
+        self.notifications_terms_of_use_text.setGeometry(QtCore.QRect(10, 40, 715, 411))
+        self.notifications_terms_of_use_text.setStyleSheet("QTextEdit {\n"
+"    padding: 5px\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {              \n"
+"    border: none;\n"
+"    background: white;\n"
+"    border-radius: 0px;\n"
+"    width: 8px;           \n"
+"    margin: 0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:vertical {\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0.511364, x2:1,y2:0.523, stop:0 rgba(245, 112, 147, 255), stop:1 rgba(230, 52, 98, 255));\n"
+"    min-height: 0px;\n"
+"}")
+        self.notifications_terms_of_use_text.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.notifications_terms_of_use_text.setReadOnly(True)
+        self.notifications_terms_of_use_text.setObjectName("notifications_terms_of_use_text")
+        self.notifications_terms_of_use_close = QtWidgets.QPushButton(self.notifications_terms_of_use_background)
+        self.notifications_terms_of_use_close.setGeometry(QtCore.QRect(708, 10, 16, 16))
+        self.notifications_terms_of_use_close.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.notifications_terms_of_use_close.setStyleSheet("QPushButton {\n"
+"    background: transparent\n"
+"}")
+        self.notifications_terms_of_use_close.setText("")
+        self.notifications_terms_of_use_close.setIcon(icon5)
+        self.notifications_terms_of_use_close.setIconSize(QtCore.QSize(13, 13))
+        self.notifications_terms_of_use_close.setObjectName("notifications_terms_of_use_close")
         Aki_sign.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Aki_sign)
@@ -546,3 +659,32 @@ class Ui_Aki_sign(object):
         self.reg_pass.setPlaceholderText(_translate("Aki_sign", "Пароль"))
         self.reg_pass_2.setPlaceholderText(_translate("Aki_sign", "Повторите пароль"))
         self.aki_copyright.setText(_translate("Aki_sign", "Aki © 2021 Все права защищены"))
+        self.notifications_oops_text.setText(_translate("Aki_sign", "Упс! Мы столкнулись с некоторыми проблемами."))
+        self.notifications_text.setText(_translate("Aki_sign", "Вы не прошли проверку CAPTCHA должным образом. Пожалуйста, попробуйте ещё раз."))
+        self.notifications_terms_of_use_heading.setText(_translate("Aki_sign", "Наши условия и поликита конфеденциальности"))
+        self.notifications_terms_of_use_text.setHtml(_translate("Aki_sign", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Ваша конфиденциальность важна для нас.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Эта политика конфиденциальности объясняет, какие персональные данные собирает и обрабатывает наше приложение &quot;Aki Passwords&quot;, как они обрабатываются и для каких целей они собираются и обрабатываются</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Какую информацию о вас мы собираем.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Типы данных, которые мы собираем и обрабатываем включают в себя следующее:</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          1.Ваш никнейм в приложение.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          2.Ваш адрес электронной почты.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          3.Ваш IP-адрес.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Мы собираем некоторую или всю эту информацию в следующих случаях:</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          1.Вы регистрируетесь как пользователь в нашем приложение</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          2.Вы используете это приложение.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Как используется Ваша личная информация.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Мы можем использовать Вашу личную информацию в следующих целях:</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          1.Для того, чтобы сделать Вас зарегистрированным пользователем нашего приложения, чтобы Вы могли добавлять в него контент.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          2.Мы можем использовать Ваш адрес электронной почты, чтобы информировать Вас об активности в нашем приложение.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">          3.Ваш IP-адрес записывается при выполнении определённых действий в нашем приложение. Он никогда не отображается публично.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Обеспечение безопасности данных</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Мы стремимся обеспечить безопасность любой информации, которую Вы нам предоставляете.Чтобы предотвратить несанкционированный доступ или раскрытие информации, мы добавили подходящие меры и процедуры для защиты и обеспечения безопасности информации,которую мы собираем.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Принятие политики</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Дальнейшее использование нашего приложения означает Ваше полное согласие с этой политикой. Если Вы не согласны с нашей политикой, то пожалуйста, не используйте данное приложение. При регистрации мы также запросим Ваше явное согласие с политикой конфиденциальности.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Изменения в политике</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Мы можем вносить изменения в данную политику в любое время. Вам может быть предложено ознакомиться и повторно принять информацию в этой политике, если она изменится в будущем.</span></p></body></html>"))
+
