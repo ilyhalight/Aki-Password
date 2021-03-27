@@ -1,7 +1,6 @@
 import os
 import sys
 import pymysql
-import time
 import json
 
 import pymysql.cursors

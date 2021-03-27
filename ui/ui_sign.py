@@ -660,8 +660,8 @@ class Ui_Aki_sign(object):
         self.reg_pass_2.setPlaceholderText(_translate("Aki_sign", "Повторите пароль"))
         self.aki_copyright.setText(_translate("Aki_sign", "Aki © 2021 Все права защищены"))
         self.notifications_oops_text.setText(_translate("Aki_sign", "Упс! Мы столкнулись с некоторыми проблемами."))
-        self.notifications_text.setText(_translate("Aki_sign", "Вы не прошли проверку CAPTCHA должным образом. Пожалуйста, попробуйте ещё раз."))
-        self.notifications_terms_of_use_heading.setText(_translate("Aki_sign", "Наши условия и поликита конфеденциальности"))
+        self.notifications_text.setText(_translate("Aki_sign", "Тестовое сообщение. Пожалуйста, попробуйте ещё раз."))
+        self.notifications_terms_of_use_heading.setText(_translate("Aki_sign", "Наши условия и политика конфиденциальности"))
         self.notifications_terms_of_use_text.setHtml(_translate("Aki_sign", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
