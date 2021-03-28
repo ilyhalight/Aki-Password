@@ -430,6 +430,68 @@ class Ui_Aki_main(object):
 "    background-color: rgb(108, 109,112);\n"
 "}")
         self.reg_cancel.setObjectName("reg_cancel")
+        self.notifications_dark_background = QtWidgets.QFrame(self.background_main)
+        self.notifications_dark_background.setGeometry(QtCore.QRect(0, 0, 941, 561))
+        self.notifications_dark_background.setStyleSheet("QFrame {\n"
+"    background-color:rgba(24, 24, 24, 0.7);\n"
+"    color:rgb(177, 177, 177);\n"
+"    border-radius:  20px\n"
+"}")
+        self.notifications_dark_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_dark_background.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_dark_background.setObjectName("notifications_dark_background")
+        self.notifications_main_background = QtWidgets.QFrame(self.notifications_dark_background)
+        self.notifications_main_background.setGeometry(QtCore.QRect(100, 60, 741, 81))
+        self.notifications_main_background.setStyleSheet("QFrame {\n"
+"    background-color: rgb(32, 32, 32);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.notifications_main_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_main_background.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_main_background.setObjectName("notifications_main_background")
+        self.notifications_up = QtWidgets.QFrame(self.notifications_main_background)
+        self.notifications_up.setGeometry(QtCore.QRect(0, 0, 741, 51))
+        self.notifications_up.setStyleSheet("QFrame {\n"
+"    background-color: rgb(230, 52, 98);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.notifications_up.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.notifications_up.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.notifications_up.setObjectName("notifications_up")
+        self.notifications_oops_text = QtWidgets.QLabel(self.notifications_up)
+        self.notifications_oops_text.setGeometry(QtCore.QRect(10, 5, 731, 41))
+        font = QtGui.QFont()
+        font.setFamily("Acrom")
+        font.setPointSize(18)
+        self.notifications_oops_text.setFont(font)
+        self.notifications_oops_text.setStyleSheet("QLabel {\n"
+"    color: #fff;\n"
+"}")
+        self.notifications_oops_text.setObjectName("notifications_oops_text")
+        self.notifications_close = QtWidgets.QPushButton(self.notifications_up)
+        self.notifications_close.setGeometry(QtCore.QRect(715, 10, 16, 16))
+        self.notifications_close.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.notifications_close.setStyleSheet("QPushButton {\n"
+"    background: transparent\n"
+"}")
+        self.notifications_close.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icons/aki_close_notify.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.notifications_close.setIcon(icon5)
+        self.notifications_close.setIconSize(QtCore.QSize(13, 13))
+        self.notifications_close.setObjectName("notifications_close")
+        self.notifications_text = QtWidgets.QLabel(self.notifications_main_background)
+        self.notifications_text.setGeometry(QtCore.QRect(10, 58, 721, 16))
+        self.notifications_text.setStyleSheet("QLabel {\n"
+"    color: #fff\n"
+"}")
+        font = QtGui.QFont()
+        font.setFamily("Acrom")
+        font.setPointSize(10)
+        self.notifications_text.setFont(font)
+        self.notifications_text.setObjectName("notifications_text")
         Aki_main.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Aki_main)
@@ -471,3 +533,5 @@ class Ui_Aki_main(object):
         self.label_5.setText(_translate("Aki_main", "Пароль"))
         self.reg_sign.setText(_translate("Aki_main", "Сохранить"))
         self.reg_cancel.setText(_translate("Aki_main", "Отмена"))
+        self.notifications_oops_text.setText(_translate("Aki_sign", "Упс! Мы столкнулись с некоторыми проблемами."))
+        self.notifications_text.setText(_translate("Aki_sign", "Тестовое сообщение. Пожалуйста, попробуйте ещё раз."))

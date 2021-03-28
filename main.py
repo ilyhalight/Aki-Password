@@ -2,6 +2,7 @@ import os
 import sys
 import pymysql
 import json
+import time
 
 import pymysql.cursors
 
@@ -20,35 +21,24 @@ from ui.ui_sign import Ui_Aki_sign
 
 # GLOBALS
 path_config  = './config.json'
-
+counter = 0
+authorized = 0
 is_config_exists = os.path.isfile('./config.json')
 
 if is_config_exists == True:
     pass
 elif is_config_exists == False:
-    logger.warning('Файл конфигурации не был найден')
-    logger.info('Создаём файл конфигурации...')
     with open(path_config, 'a') as config_file:
-        logger.info('Записываем базовые значения в файл конфигурации')
         config_file.write('{"db_host" : "localhost", "db_user" : "root", "db_password" : " ", "db_name" : "aki_accounts"}')
-        logger.success('Файл конфигурации был успешно создан')
         config_file.close()
 
 with open(path_config, 'r') as config_file:
-    logger.info('Загрузка конфигов...')
     try:
         _config = json.load(config_file)
     except:
         logger.critical('Не удалось загрузить конфиг')
         logger.info('Закрытие приложения...')
-    finally:
-        logger.success('Конфиги закружены')
 
-
-counter = 0
-authorized = 0
-
-logger.info('Подключаемся к базе данных')
 
 connection = pymysql.connect(
                             host = _config['db_host'],
@@ -58,7 +48,6 @@ connection = pymysql.connect(
                             )
 
 cursor = connection.cursor()
-logger.success('Подключение к базе данных установлено')
 
 # SIGN WINDOW
 class SignWindow(QMainWindow):
@@ -249,6 +238,9 @@ class MainWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         # MAIN FRAME
+        self.ui.notifications_close.setIcon(QtGui.QIcon("ui/icons/aki_close_notify.png"))
+        self.ui.notifications_main_background.hide()
+        self.ui.notifications_dark_background.hide()
 
         self.ui.img_logo.setIcon(QtGui.QIcon("ui/icons/aki_logo.png"))
         self.ui.btn_close.setIcon(QtGui.QIcon("ui/icons/aki_close.png"))
@@ -256,6 +248,7 @@ class MainWindow(QMainWindow):
 
         self.ui.btn_delete_user.setIcon(QtGui.QIcon("ui/icons/aki_delete.png"))
         self.ui.btn_copy_data.setIcon(QtGui.QIcon("ui/icons/aki_copy.png"))
+
 
         self.ui.frame.hide()
 
@@ -272,23 +265,65 @@ class MainWindow(QMainWindow):
         self.ui.btn_add_user.clicked.connect(self.open_reg)
         self.ui.reg_sign.clicked.connect(self.add_user_to_table)
 
+        self.ui.notifications_close.clicked.connect(self.notify_close)
+
     def add_user_to_table(self):
         site_name = self.ui.new_site_name.text()
         site_user = self.ui.new_site_user.text()
         site_pass = self.ui.new_site_pass.text()
 
-        if len(site_pass) < 5 or len(site_user) < 4:
-            print('Введенный логин или пароль слишком короткий.')
+        if len(site_pass) < 5:
+            self.warn_notifications('Введенный пароль не может быть меньше 5 символов.')
+        elif len(site_user) < 4:
+            self.warn_notifications('Введенный логин не может быть меньше 4 символов.')
         elif len(site_user) > 32:
-            print('Логин не может быть больше 32 символов.')
+            self.warn_notifications('Введенный Логин не может быть больше 32 символов.')
         elif len(site_name) > 255:
-            print('Адрес сайта не может быть больше 255 символов.')
+            self.warn_notifications('Введенный адрес сайта не может быть больше 255 символов.')
         elif len(site_pass) > 255:
-            print('Пароль не может быть больше 255 символов.')
+            self.warn_notifications('Введенный пароль не может быть больше 255 символов.')
         else:
-            print('42')
+            sql = "INSERT INTO aki_accounts (sitename, sitelogin, sitepassword) VALUES (%s, %s, %s)"
+            try:
+                cursor.execute(sql, (f'{site_name}', f'{site_user}', f'{site_pass}'))
+                connection.commit()
+                self.notifications('Успех.', 'Вы успешно добавили аккаунт')
+                self.hide_reg()
+            except:
+                connection.rollback()
+                self.warn_notifications('Произошла неизвестная ошибка.')
+
+    def warn_notifications(self, text = "Произошла серверная ошибка. Попробуйте ещё раз"):
+        self.ui.notifications_dark_background.show()
+        self.ui.notifications_main_background.show()
+        self.ui.notifications_up.setStyleSheet("QFrame {\n"
+"    background-color: rgb(230, 52, 98);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.ui.notifications_oops_text.setText('Упс! Мы столкнулись с некоторыми проблемами.')
+        self.ui.notifications_text.setText(text)
+
+    def notifications(self, text = 'Тестовое уведомление', message = "Вы успешно получили уведомление"):
+        self.ui.notifications_dark_background.show()
+        self.ui.notifications_main_background.show()
+        self.ui.notifications_up.setStyleSheet("QFrame {\n"
+"    background-color: rgb(95, 229, 50);\n"
+"    border:  None;\n"
+"    border-radius: 10px;\n"
+"}")
+        self.ui.notifications_oops_text.setText(text)
+        self.ui.notifications_text.setText(message)
+
+
+    def notify_close(self):
+        self.ui.notifications_dark_background.hide()
+        self.ui.notifications_main_background.hide()
 
     def hide_reg(self):
+        self.ui.new_site_name.setText('')
+        self.ui.new_site_user.setText('')
+        self.ui.new_site_pass.setText('')
         self.ui.frame.hide()
 
     def open_reg(self):
@@ -353,12 +388,18 @@ class SplashScreen(QMainWindow):
         # CHANGE DESCRIPTION
 
         # Initial Text
-        self.ui.ss_label_description.setText("<strong>WELCOME</strong> TO MY APPLICATION")
+        self.ui.ss_label_description.setText("<strong>Загрузка</strong> интерфейса")
 
         # Change Texts
-        #QtCore.QTimer.singleShot(1500, lambda: self.ui.label_description.setText("<strong>LOADING</strong> DATABASE"))
-        QtCore.QTimer.singleShot(1500, lambda: self.ui.ss_label_description.setText("<strong>LOADING</strong> COMMANDS"))
-        QtCore.QTimer.singleShot(3000, lambda: self.ui.ss_label_description.setText("<strong>LOADING</strong> USER INTERFACE"))
+        if is_config_exists == True:
+            QtCore.QTimer.singleShot(1000, lambda: self.ui.ss_label_description.setText("<strong>Загрузка</strong> конфигов"))
+            QtCore.QTimer.singleShot(2500, lambda: self.ui.ss_label_description.setText("<strong>Загрузка</strong> базы данных"))
+        else:
+            QtCore.QTimer.singleShot(1000, lambda: self.ui.ss_label_description.setText("<strong>Создаём</strong> конфиг"))
+            QtCore.QTimer.singleShot(2000, lambda: self.ui.ss_label_description.setText("<strong>Закрытие</strong> приложения..."))
+            time.sleep(2)
+            sys.exit()
+
 
 
     def mousePressEvent(self, event):
