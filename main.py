@@ -23,6 +23,7 @@ from ui.ui_sign import Ui_Aki_sign
 path_config  = './config.json'
 counter = 0
 authorized = 0
+nickname = ' '
 is_config_exists = os.path.isfile('./config.json')
 
 if is_config_exists == True:
@@ -138,12 +139,15 @@ class SignWindow(QMainWindow):
                     pass_sql = row[0]
                     if auth_pass == pass_sql:
                         authorized == 1
+                        global nickname
+                        nickname = auth_login
                         # SHOW MAIN WINDOW
                         self.main = MainWindow()
                         self.main.show()
 
                         # CLOSE SIGN WINDOW
                         self.close()
+                        return nickname
                     else:
                         self.warn_notifications('Неверный логин или пароль.')
 
@@ -283,15 +287,21 @@ class MainWindow(QMainWindow):
         elif len(site_pass) > 255:
             self.warn_notifications('Введенный пароль не может быть больше 255 символов.')
         else:
-            sql = "INSERT INTO aki_accounts (sitename, sitelogin, sitepassword) VALUES (%s, %s, %s)"
-            try:
-                cursor.execute(sql, (f'{site_name}', f'{site_user}', f'{site_pass}'))
+            #sql = "INSERT INTO aki_accounts (sitename, sitelogin, sitepassword) VALUES (%s, %s, %s)"
+            # try:
+            global nickname
+            cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
+            sql_data = cursor.fetchall()
+            for row in sql_data:
+                accountid = row[0]
+                #cursor.execute(f"UPDATE aki_accounts SET sitename = sitename + '{site_name}', sitelogin = sitelogin + '{site_user}', sitepassword = sitepassword + '{site_pass}' WHERE id = '{accountid}'")
+                cursor.execute ("UPDATE aki_accounts SET sitename = %s, sitelogin = %s, sitepassword = %s WHERE id = %s", (site_name, site_user, site_pass, accountid))
                 connection.commit()
                 self.notifications('Успех.', 'Вы успешно добавили аккаунт')
                 self.hide_reg()
-            except:
-                connection.rollback()
-                self.warn_notifications('Произошла неизвестная ошибка.')
+            # except:
+            #     connection.rollback()
+            #     self.warn_notifications('Произошла неизвестная ошибка.')
 
     def warn_notifications(self, text = "Произошла серверная ошибка. Попробуйте ещё раз"):
         self.ui.notifications_dark_background.show()
