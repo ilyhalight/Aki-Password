@@ -275,33 +275,60 @@ class MainWindow(QMainWindow):
 
         self.ui.notifications_close.clicked.connect(self.notify_close)
 
+    def select_sitename_from_database(self):
+        global nickname
+        try:
+            cursor.execute(f"SELECT sitename FROM aki_accounts WHERE login = '{nickname}'")
+            sql_sitename = cursor.fetchall()
+
+            for row in sql_sitename:
+                sitename = row[0]
+            return sitename
+        except:
+            self.warn_notifications('Ошибка доступа к базе данных.')
+
+    def select_sitelogin_from_database(self):
+        global nickname
+        try:
+            cursor.execute(f"SELECT sitelogin FROM aki_accounts WHERE login = '{nickname}'")
+            sql_sitelogin = cursor.fetchall()
+
+            for row in sql_sitelogin:
+                sitelogin = row[0]
+            return sitelogin
+        except:
+            self.warn_notifications('Ошибка доступа к базе данных.')
+
+    def select_sitepassword_from_database(self):
+        global nickname
+        try:
+            cursor.execute(f"SELECT sitepassword FROM aki_accounts WHERE login = '{nickname}'")
+            sql_sitepassword = cursor.fetchall()
+
+            for row in sql_sitepassword:
+                sitepassword = row[0]
+            return sitepassword
+        except:
+            self.warn_notifications('Ошибка доступа к базе данных.')
+
     def table_filling(self):
         global nickname
         fillcounter = 0
         fillcounter2 = 0
         fillcounter3 = 0
         try:
-            cursor.execute(f"SELECT sitename FROM aki_accounts WHERE login = '{nickname}'")
-            sql_sitename = cursor.fetchall()
-            cursor.execute(f"SELECT sitelogin FROM aki_accounts WHERE login = '{nickname}'")
-            sql_sitelogin = cursor.fetchall()
-            cursor.execute(f"SELECT sitepassword FROM aki_accounts WHERE login = '{nickname}'")
-            sql_sitepassword = cursor.fetchall()
+            sitename = self.select_sitename_from_database()
+            sitelogin = self.select_sitelogin_from_database()
+            sitepassword = self.select_sitepassword_from_database()
 
-            for row in sql_sitename:
-                sitename = row[0]
-                sitenamedb = sitename.split(' ')
-                sitenamedbcount = len(sitenamedb)
+            sitenamedb = sitename.split('/|/')
+            sitenamedbcount = len(sitenamedb)
 
-            for row in sql_sitelogin:
-                sitelogin = row[0]
-                sitelogindb = sitelogin.split(' ')
-                sitelogindbcount = len(sitelogindb)
+            sitelogindb = sitelogin.split('/|/')
+            sitelogindbcount = len(sitelogindb)
 
-            for row in sql_sitepassword:
-                sitepassword = row[0]
-                sitepassworddb = sitepassword.split(' ')
-                sitepassworddbcount = len(sitepassworddb)
+            sitepassworddb = sitepassword.split('/|/')
+            sitepassworddbcount = len(sitepassworddb)
 
             self.ui.tableWidget.setRowCount(0)
             if sitenamedbcount > 12:
@@ -310,7 +337,6 @@ class MainWindow(QMainWindow):
             else:
                 self.ui.tableWidget.setRowCount(12)
                 self.ui.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-
 
             while fillcounter < sitenamedbcount:
                 item = QtWidgets.QTableWidgetItem()
@@ -347,23 +373,20 @@ class MainWindow(QMainWindow):
             self.warn_notifications('Введенный пароль не может быть меньше 5 символов.')
         elif len(site_user) < 4:
             self.warn_notifications('Введенный логин не может быть меньше 4 символов.')
-        elif len(site_user) > 32:
-            self.warn_notifications('Введенный Логин не может быть больше 32 символов.')
-        elif len(site_name) > 255:
-            self.warn_notifications('Введенный адрес сайта не может быть больше 255 символов.')
-        elif len(site_pass) > 255:
-            self.warn_notifications('Введенный пароль не может быть больше 255 символов.')
         else:
             #sql = "INSERT INTO aki_accounts (sitename, sitelogin, sitepassword) VALUES (%s, %s, %s)"
             # try:
             global nickname
+            sitename = self.select_sitename_from_database()
+            sitelogin = self.select_sitelogin_from_database()
+            sitepassword = self.select_sitepassword_from_database()
             cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
             sql_data = cursor.fetchall()
             for row in sql_data:
                 accountid = row[0]
                 #cursor.execute(f"UPDATE aki_accounts SET sitename = sitename + '{site_name}', sitelogin = sitelogin + '{site_user}', sitepassword = sitepassword + '{site_pass}' WHERE id = '{accountid}'")
                 #cursor.execute ("UPDATE aki_accounts SET sitename = %s, sitelogin = %s, sitepassword = %s WHERE id = %s", (site_name, site_user, site_pass, accountid))
-                cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{site_name}', `sitelogin` = '{site_user}', `sitepassword` = '{site_pass}' WHERE `id` = '{accountid}'")
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{sitename + '/|/' +site_name}', `sitelogin` = '{sitelogin + '/|/' + site_user}', `sitepassword` = '{sitepassword + '/|/' + site_pass}' WHERE `id` = '{accountid}'")
                 # * Оно работает но не совсем так как надо. 2-Й комментарий пока наиболее рабочий метод (добавляет только 1 значение)
                 connection.commit()
                 self.notifications('Успех.', 'Вы успешно добавили аккаунт')
