@@ -24,8 +24,7 @@
 
 # Overview
 
-Aki Password is a simple password manager where you can safely store your data. (IN DEVELOPING)
-
+Aki Password is a simple password manager where you can safely store your data.
 ![Passwords menu](https://github.com/ilyhalight/Aki-Password/blob/master/screenshots/screenshot_main.png)
 
 **Now done:**
