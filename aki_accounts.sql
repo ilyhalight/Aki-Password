@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Мар 29 2021 г., 16:16
+-- Время создания: Мар 29 2021 г., 17:08
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.3.27
 
@@ -33,9 +33,9 @@ CREATE TABLE `aki_accounts` (
   `login` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `sitename` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'names;',
-  `sitelogin` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'logins;',
-  `sitepassword` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'passwords;'
+  `sitename` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'default',
+  `sitelogin` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'default',
+  `sitepassword` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'default'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -57,7 +57,7 @@ ALTER TABLE `aki_accounts`
 -- AUTO_INCREMENT для таблицы `aki_accounts`
 --
 ALTER TABLE `aki_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
