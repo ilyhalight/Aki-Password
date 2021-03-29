@@ -7,7 +7,10 @@
 - Added a notification system
 - Added user interface
 - Added a template for the system for adding passwords
-# Alpha 0.2 (2021-03-27)
+# Alpha 0.2 (2021-03-29)
 - Added requirements.txt
 - Added readme.md
 - Added changelog.md
+- Added a system for adding passwords (does not work correctly)
+- Added display of data from the database
+- Minor edits in ui_main.py
