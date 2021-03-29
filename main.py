@@ -132,9 +132,8 @@ class SignWindow(QMainWindow):
         if len(auth_pass) < 5 or len(auth_login) < 4 or len(auth_login) > 20 or auth_login == '' or auth_pass == '':
             self.warn_notifications('Неверный логин или пароль.')
         else:
-            sql = f"SELECT password FROM aki_accounts WHERE login = '{auth_login}'"
             try:
-                cursor.execute(sql)
+                cursor.execute(f"SELECT password FROM aki_accounts WHERE login = '{auth_login}'")
                 sql_data = cursor.fetchall()
                 for row in sql_data:
                     pass_sql = row[0]
@@ -142,18 +141,13 @@ class SignWindow(QMainWindow):
                         authorized == 1
                         global nickname
                         nickname = auth_login
-                        # SHOW MAIN WINDOW
                         self.main = MainWindow()
-                        self.main.show()
-
-                        # CLOSE SIGN WINDOW
-                        self.close()
-                        return nickname
+                        self.main.show() # SHOW MAIN WINDOW
+                        self.close() # CLOSE SIGN WINDOW
                     else:
                         self.warn_notifications('Неверный логин или пароль.')
 
             except:
-                connection.rollback()
                 self.warn_notifications('Произошла неизвестная ошибка.')
 
     def registration(self):
@@ -332,7 +326,7 @@ class MainWindow(QMainWindow):
 
             self.ui.tableWidget.setRowCount(0)
             if sitenamedbcount > 12:
-                self.ui.tableWidget.setRowCount(sitenamedb)
+                self.ui.tableWidget.setRowCount(sitenamedbcount)
                 self.ui.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
             else:
                 self.ui.tableWidget.setRowCount(12)
@@ -374,26 +368,26 @@ class MainWindow(QMainWindow):
         elif len(site_user) < 4:
             self.warn_notifications('Введенный логин не может быть меньше 4 символов.')
         else:
-            #sql = "INSERT INTO aki_accounts (sitename, sitelogin, sitepassword) VALUES (%s, %s, %s)"
-            # try:
-            global nickname
-            sitename = self.select_sitename_from_database()
-            sitelogin = self.select_sitelogin_from_database()
-            sitepassword = self.select_sitepassword_from_database()
-            cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
-            sql_data = cursor.fetchall()
-            for row in sql_data:
-                accountid = row[0]
-                #cursor.execute(f"UPDATE aki_accounts SET sitename = sitename + '{site_name}', sitelogin = sitelogin + '{site_user}', sitepassword = sitepassword + '{site_pass}' WHERE id = '{accountid}'")
-                #cursor.execute ("UPDATE aki_accounts SET sitename = %s, sitelogin = %s, sitepassword = %s WHERE id = %s", (site_name, site_user, site_pass, accountid))
-                cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{sitename + '/|/' +site_name}', `sitelogin` = '{sitelogin + '/|/' + site_user}', `sitepassword` = '{sitepassword + '/|/' + site_pass}' WHERE `id` = '{accountid}'")
-                # * Оно работает но не совсем так как надо. 2-Й комментарий пока наиболее рабочий метод (добавляет только 1 значение)
-                connection.commit()
-                self.notifications('Успех.', 'Вы успешно добавили аккаунт')
-                self.hide_reg()
-            # except:
-            #     connection.rollback()
-            #     self.warn_notifications('Произошла неизвестная ошибка.')
+            try:
+                global nickname
+                sitename = self.select_sitename_from_database()
+                sitelogin = self.select_sitelogin_from_database()
+                sitepassword = self.select_sitepassword_from_database()
+                cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
+                sql_data = cursor.fetchall()
+                for row in sql_data:
+                    accountid = row[0]
+                    if sitename == 'default' and sitelogin == 'default' and sitepassword == 'default':
+                        cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{site_name}', `sitelogin` = '{site_user}', `sitepassword` = '{site_pass}' WHERE `id` = '{accountid}'")
+                    else:
+                        cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{sitename + '/|/' +site_name}', `sitelogin` = '{sitelogin + '/|/' + site_user}', `sitepassword` = '{sitepassword + '/|/' + site_pass}' WHERE `id` = '{accountid}'")
+                    # * Оно работает но не совсем так как надо. 2-Й комментарий пока наиболее рабочий метод (добавляет только 1 значение)
+                    connection.commit()
+                    self.notifications('Успех.', 'Вы успешно добавили аккаунт')
+                    self.hide_reg()
+            except:
+                connection.rollback()
+                self.warn_notifications('Произошла неизвестная ошибка.')
 
     def warn_notifications(self, text = "Произошла серверная ошибка. Попробуйте ещё раз"):
         self.ui.notifications_dark_background.show()
