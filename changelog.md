@@ -15,3 +15,6 @@
 - Added display of data from the database
 - Minor edits in ui_main.py
 - Changed database columns
+# Alpha 0.3 (2021-03-30)
+- Added password adding system (Fully working)
+- Added commands for more convenient work with the database
