@@ -26,6 +26,7 @@
 
 Aki Password is a simple password manager where you can safely store your data. (IN DEVELOPING)
 
+![Passwords menu](https://github.com/ilyhalight/Aki-Password/blob/master/screenshots/screenshot_main.png)
 
 **Now done:**
  - Registration and authorization system
