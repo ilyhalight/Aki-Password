@@ -303,7 +303,7 @@ class MainWindow(QMainWindow):
                 sitepassworddb = sitepassword.split(' ')
                 sitepassworddbcount = len(sitepassworddb)
 
-
+            self.ui.tableWidget.setRowCount(0)
             if sitenamedbcount > 12:
                 self.ui.tableWidget.setRowCount(sitenamedb)
                 self.ui.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
@@ -368,7 +368,6 @@ class MainWindow(QMainWindow):
                 connection.commit()
                 self.notifications('Успех.', 'Вы успешно добавили аккаунт')
                 self.hide_reg()
-                self.table_filling()
             # except:
             #     connection.rollback()
             #     self.warn_notifications('Произошла неизвестная ошибка.')
@@ -405,6 +404,7 @@ class MainWindow(QMainWindow):
         self.ui.new_site_user.setText('')
         self.ui.new_site_pass.setText('')
         self.ui.frame.hide()
+        self.table_filling()
 
     def open_reg(self):
         self.ui.frame.show()
