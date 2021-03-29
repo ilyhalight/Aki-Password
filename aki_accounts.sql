@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Мар 27 2021 г., 15:46
+-- Время создания: Мар 29 2021 г., 16:16
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.3.27
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `aki_password_manager`
+-- База данных: `r6236_aki_password_manager`
 --
 
 -- --------------------------------------------------------
@@ -33,9 +33,9 @@ CREATE TABLE `aki_accounts` (
   `login` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `sitename` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `sitelogin` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `sitepassword` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL
+  `sitename` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'names;',
+  `sitelogin` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'logins;',
+  `sitepassword` varchar(5000) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'passwords;'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
