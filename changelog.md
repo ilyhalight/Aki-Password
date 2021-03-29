@@ -18,3 +18,6 @@
 # Alpha 0.3 (2021-03-30)
 - Added password adding system (Fully working)
 - Added commands for more convenient work with the database
+- Changed default values for "sitename, sitelogin, sitepassword"
+- Added autoreplacement of default values with user-created ones
+- Fixed a bug with the program crash when the number of rows in the user database was more than 12
