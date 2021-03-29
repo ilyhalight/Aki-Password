@@ -14,3 +14,4 @@
 - Added a system for adding passwords (does not work correctly)
 - Added display of data from the database
 - Minor edits in ui_main.py
+- Changed database columns
