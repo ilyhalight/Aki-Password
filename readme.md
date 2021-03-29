@@ -31,10 +31,10 @@ Aki Password is a simple password manager where you can safely store your data. 
  - Registration and authorization system
  - Notification system
  - User interface
- - Template for the system of adding passwords
-
-**Not implemented:**
+ - Data display from db
  - Password adding system
+ 
+**Not implemented:**
  - Password hashing system 
 
 # Installation
