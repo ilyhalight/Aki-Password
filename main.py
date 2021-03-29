@@ -45,7 +45,8 @@ connection = pymysql.connect(
                             host = _config['db_host'],
                             user = _config['db_user'],
                             password = _config['db_password'],
-                            database = _config['db_name']
+                            database = _config['db_name'],
+                            autocommit=True
                             )
 
 cursor = connection.cursor()
@@ -257,11 +258,14 @@ class MainWindow(QMainWindow):
         self.ui.frame.hide()
 
         item = self.ui.tableWidget.item(0, 0)
-        item.setText('Sitename')
+        item.setText('ui.sitename')
         item = self.ui.tableWidget.item(0, 1)
-        item.setText('Username')
+        item.setText('ui.sitelogin')
         item = self.ui.tableWidget.item(0, 2)
-        item.setText('Password')
+        item.setText('ui.sitepassword')
+
+
+        self.table_filling()
 
         # UI FUNCTIONS
         self.ui.btn_close.clicked.connect(self.minimize)
@@ -270,6 +274,69 @@ class MainWindow(QMainWindow):
         self.ui.reg_sign.clicked.connect(self.add_user_to_table)
 
         self.ui.notifications_close.clicked.connect(self.notify_close)
+
+    def table_filling(self):
+        global nickname
+        fillcounter = 0
+        fillcounter2 = 0
+        fillcounter3 = 0
+        try:
+            cursor.execute(f"SELECT sitename FROM aki_accounts WHERE login = '{nickname}'")
+            sql_sitename = cursor.fetchall()
+            cursor.execute(f"SELECT sitelogin FROM aki_accounts WHERE login = '{nickname}'")
+            sql_sitelogin = cursor.fetchall()
+            cursor.execute(f"SELECT sitepassword FROM aki_accounts WHERE login = '{nickname}'")
+            sql_sitepassword = cursor.fetchall()
+
+            for row in sql_sitename:
+                sitename = row[0]
+                sitenamedb = sitename.split(' ')
+                sitenamedbcount = len(sitenamedb)
+
+            for row in sql_sitelogin:
+                sitelogin = row[0]
+                sitelogindb = sitelogin.split(' ')
+                sitelogindbcount = len(sitelogindb)
+
+            for row in sql_sitepassword:
+                sitepassword = row[0]
+                sitepassworddb = sitepassword.split(' ')
+                sitepassworddbcount = len(sitepassworddb)
+
+
+            if sitenamedbcount > 12:
+                self.ui.tableWidget.setRowCount(sitenamedb)
+                self.ui.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+            else:
+                self.ui.tableWidget.setRowCount(12)
+                self.ui.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+
+
+            while fillcounter < sitenamedbcount:
+                item = QtWidgets.QTableWidgetItem()
+                self.ui.tableWidget.setItem(fillcounter, 0, item)
+                itemsitename = self.ui.tableWidget.item(fillcounter, 0)
+                itemsitename.setText(sitenamedb[fillcounter])
+
+                fillcounter = fillcounter + 1
+
+            while fillcounter2 < sitelogindbcount:
+                item = QtWidgets.QTableWidgetItem()
+                self.ui.tableWidget.setItem(fillcounter2, 1, item)
+                itemsitelogin = self.ui.tableWidget.item(fillcounter2, 1)
+                itemsitelogin.setText(sitelogindb[fillcounter2])
+
+                fillcounter2 = fillcounter2 + 1
+
+            while fillcounter3 < sitepassworddbcount:
+                item = QtWidgets.QTableWidgetItem()
+                self.ui.tableWidget.setItem(fillcounter3, 2, item)
+                itemsitepassword = self.ui.tableWidget.item(fillcounter3, 2)
+                itemsitepassword.setText(sitepassworddb[fillcounter3])
+
+                fillcounter3 = fillcounter3 + 1
+        except:
+            self.warn_notifications('Ошибка доступа к базе данных.')
 
     def add_user_to_table(self):
         site_name = self.ui.new_site_name.text()
@@ -295,10 +362,13 @@ class MainWindow(QMainWindow):
             for row in sql_data:
                 accountid = row[0]
                 #cursor.execute(f"UPDATE aki_accounts SET sitename = sitename + '{site_name}', sitelogin = sitelogin + '{site_user}', sitepassword = sitepassword + '{site_pass}' WHERE id = '{accountid}'")
-                cursor.execute ("UPDATE aki_accounts SET sitename = %s, sitelogin = %s, sitepassword = %s WHERE id = %s", (site_name, site_user, site_pass, accountid))
+                #cursor.execute ("UPDATE aki_accounts SET sitename = %s, sitelogin = %s, sitepassword = %s WHERE id = %s", (site_name, site_user, site_pass, accountid))
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{site_name}', `sitelogin` = '{site_user}', `sitepassword` = '{site_pass}' WHERE `id` = '{accountid}'")
+                # * Оно работает но не совсем так как надо. 2-Й комментарий пока наиболее рабочий метод (добавляет только 1 значение)
                 connection.commit()
                 self.notifications('Успех.', 'Вы успешно добавили аккаунт')
                 self.hide_reg()
+                self.table_filling()
             # except:
             #     connection.rollback()
             #     self.warn_notifications('Произошла неизвестная ошибка.')
