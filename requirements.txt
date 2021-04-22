@@ -1,4 +1,4 @@
 pymysql==0.10.1
 loguru==0.5.3
-pyqt5==12.8.1
-pyqt5-tools==5.15.2.2.0.1
+pyqt5==5.15.2
+pyqt5-tools==5.15.2.3
