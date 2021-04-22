@@ -22,3 +22,6 @@
 - Changed default values for "sitename, sitelogin, sitepassword"
 - Added autoreplacement of default values with user-created ones
 - Fixed a bug with the program crash when the number of rows in the user database was more than 12
+# Alpha 0.4 (2021-04-22)
+- Added removal of passwords from the program
+- Some other minor changes
