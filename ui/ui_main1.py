@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_main.ui'
+# Form implementation generated from reading ui file 'ui_main1.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -187,17 +187,20 @@ class Ui_Aki_main(object):
 "QTableWidget::item:selected{\n"
 "    background-color: transparent;\n"
 "}\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background: transparent;\n"
+"    height: 14px;\n"
+"    margin: 0px 21px 0 21px;\n"
+"    border-radius: 0px;\n"
+"}\n"
 " QScrollBar:vertical {\n"
 "    border: none;\n"
-"    background: white;\n"
-"    width: 8px;\n"
-"    margin: 0px 0 0px 0;\n"
+"    background: #fff;\n"
+"    width: 14px;\n"
+"    margin: 21px 0 21px 0;\n"
 "    border-radius: 0px;\n"
 " }\n"
-"QScrollBar::handle:vertical {\n"
-"    background: qlineargradient(spread:pad, x1:0, y1:0.511364, x2:1,y2:0.523, stop:0 rgba(245, 112, 147, 255), stop:1 rgba(230, 52, 98, 255));\n"
-"    min-height: 0px;\n"
-"}\n"
 "QHeaderView::section{\n"
 "    Background-color: transparent;\n"
 "    max-width: 30px;\n"
@@ -223,14 +226,12 @@ class Ui_Aki_main(object):
 "}\n"
 "")
         self.tableWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.tableWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.tableWidget.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setAlternatingRowColors(False)
-        # self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
-        self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
+        self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setShowGrid(True)
         self.tableWidget.setGridStyle(QtCore.Qt.SolidLine)
@@ -287,17 +288,17 @@ class Ui_Aki_main(object):
         self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
         self.tableWidget.verticalHeader().setHighlightSections(False)
         self.tableWidget.verticalHeader().setStretchLastSection(True)
-        self.btn_copy_data = QtWidgets.QPushButton(self.frame_3)
-        self.btn_copy_data.setGeometry(QtCore.QRect(560, 30, 21, 21))
-        self.btn_copy_data.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_copy_data.setStyleSheet("QPushButton {\n"
+        self.btn_copy_pass = QtWidgets.QPushButton(self.frame_3)
+        self.btn_copy_pass.setGeometry(QtCore.QRect(560, 30, 21, 21))
+        self.btn_copy_pass.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_copy_pass.setStyleSheet("QPushButton {\n"
 "    background: transparent\n"
 "}")
-        self.btn_copy_data.setText("")
+        self.btn_copy_pass.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("icons/aki_copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_copy_data.setIcon(icon2)
-        self.btn_copy_data.setObjectName("btn_copy_data")
+        self.btn_copy_pass.setIcon(icon2)
+        self.btn_copy_pass.setObjectName("btn_copy_pass")
         self.btn_delete_user = QtWidgets.QPushButton(self.frame_3)
         self.btn_delete_user.setGeometry(QtCore.QRect(590, 30, 21, 21))
         self.btn_delete_user.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -328,128 +329,6 @@ class Ui_Aki_main(object):
 "    color: #3ca24f\n"
 "}")
         self.btn_add_user.setObjectName("btn_add_user")
-        self.btn_remove_user = QtWidgets.QPushButton(self.frame_3)
-        self.btn_remove_user.setGeometry(QtCore.QRect(460, 360, 56, 56))
-        self.btn_remove_user.setMinimumSize(QtCore.QSize(56, 56))
-        self.btn_remove_user.setMaximumSize(QtCore.QSize(56, 56))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(56)
-        self.btn_remove_user.setFont(font)
-        self.btn_remove_user.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_remove_user.setStyleSheet("QPushButton {\n"
-"    border-radius: 26px;\n"
-"    background-color: rgb(44, 49, 60);\n"
-"    border: 5px solid rgb(39, 44, 54);\n"
-"    background-position: center;\n"
-"    background-repeat: no-repeat;\n"
-"    color: rgb(230, 52, 98)\n"
-"}")
-        self.btn_remove_user.setObjectName("btn_remove_user")
-        self.frame = QtWidgets.QFrame(self.background_main)
-        self.frame.setGeometry(QtCore.QRect(80, 60, 741, 471))
-        self.frame.setStyleSheet("QFrame {\n"
-"    background-color:rgba(24, 24, 24, 0.7);\n"
-"    color:rgb(177, 177, 177);\n"
-"    border-radius:  20px\n"
-"}")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setGeometry(QtCore.QRect(0, 10, 741, 41))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(30)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.new_site_name = QtWidgets.QLineEdit(self.frame)
-        self.new_site_name.setGeometry(QtCore.QRect(230, 130, 261, 41))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        self.new_site_name.setFont(font)
-        self.new_site_name.setStyleSheet("QLineEdit {\n"
-"    border: none;\n"
-"    background-color: #0e0e0e;\n"
-"    border-radius: 7px;\n"
-"    color: #fff\n"
-"}")
-        self.new_site_name.setInputMask("")
-        self.new_site_name.setObjectName("new_site_name")
-        self.new_site_user = QtWidgets.QLineEdit(self.frame)
-        self.new_site_user.setGeometry(QtCore.QRect(230, 210, 261, 41))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        self.new_site_user.setFont(font)
-        self.new_site_user.setStyleSheet("QLineEdit {\n"
-"    border: none;\n"
-"    background-color: #0e0e0e;\n"
-"    border-radius: 7px;\n"
-"    color: #fff\n"
-"}")
-        self.new_site_user.setInputMask("")
-        self.new_site_user.setObjectName("new_site_user")
-        self.label_3 = QtWidgets.QLabel(self.frame)
-        self.label_3.setGeometry(QtCore.QRect(230, 110, 251, 16))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(12)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(self.frame)
-        self.label_4.setGeometry(QtCore.QRect(230, 190, 251, 16))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(12)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.new_site_pass = QtWidgets.QLineEdit(self.frame)
-        self.new_site_pass.setGeometry(QtCore.QRect(230, 290, 261, 41))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        self.new_site_pass.setFont(font)
-        self.new_site_pass.setStyleSheet("QLineEdit {\n"
-"    border: none;\n"
-"    background-color: #0e0e0e;\n"
-"    border-radius: 7px;\n"
-"    color: #fff\n"
-"}")
-        self.new_site_pass.setInputMask("")
-        self.new_site_pass.setObjectName("new_site_pass")
-        self.label_5 = QtWidgets.QLabel(self.frame)
-        self.label_5.setGeometry(QtCore.QRect(230, 270, 251, 16))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(12)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
-        self.reg_sign = QtWidgets.QPushButton(self.frame)
-        self.reg_sign.setGeometry(QtCore.QRect(230, 360, 111, 31))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        self.reg_sign.setFont(font)
-        self.reg_sign.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.reg_sign.setStyleSheet("QPushButton {\n"
-"    color: #fff;\n"
-"    border: none;\n"
-"    border-radius: 10.5px;\n"
-"    background-color: rgb(230, 52, 98)\n"
-"}")
-        self.reg_sign.setObjectName("reg_sign")
-        self.reg_cancel = QtWidgets.QPushButton(self.frame)
-        self.reg_cancel.setGeometry(QtCore.QRect(380, 360, 111, 31))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        self.reg_cancel.setFont(font)
-        self.reg_cancel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.reg_cancel.setStyleSheet("QPushButton {\n"
-"    color: #fff;\n"
-"    border: none;\n"
-"    border-radius: 10.5px;\n"
-"    background-color: rgb(108, 109,112);\n"
-"}")
-        self.reg_cancel.setObjectName("reg_cancel")
         self.frame_remove = QtWidgets.QFrame(self.background_main)
         self.frame_remove.setGeometry(QtCore.QRect(80, 60, 741, 471))
         self.frame_remove.setStyleSheet("QFrame {\n"
@@ -514,68 +393,6 @@ class Ui_Aki_main(object):
 "    background-color: rgb(108, 109,112);\n"
 "}")
         self.remove_cancel.setObjectName("remove_cancel")
-        self.notifications_dark_background = QtWidgets.QFrame(self.background_main)
-        self.notifications_dark_background.setGeometry(QtCore.QRect(0, 0, 941, 561))
-        self.notifications_dark_background.setStyleSheet("QFrame {\n"
-"    background-color:rgba(24, 24, 24, 0.7);\n"
-"    color:rgb(177, 177, 177);\n"
-"    border-radius:  20px\n"
-"}")
-        self.notifications_dark_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.notifications_dark_background.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.notifications_dark_background.setObjectName("notifications_dark_background")
-        self.notifications_main_background = QtWidgets.QFrame(self.notifications_dark_background)
-        self.notifications_main_background.setGeometry(QtCore.QRect(100, 60, 741, 81))
-        self.notifications_main_background.setStyleSheet("QFrame {\n"
-"    background-color: rgb(32, 32, 32);\n"
-"    border:  None;\n"
-"    border-radius: 10px;\n"
-"}")
-        self.notifications_main_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.notifications_main_background.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.notifications_main_background.setObjectName("notifications_main_background")
-        self.notifications_up = QtWidgets.QFrame(self.notifications_main_background)
-        self.notifications_up.setGeometry(QtCore.QRect(0, 0, 741, 51))
-        self.notifications_up.setStyleSheet("QFrame {\n"
-"    background-color: rgb(230, 52, 98);\n"
-"    border:  None;\n"
-"    border-radius: 10px;\n"
-"}")
-        self.notifications_up.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.notifications_up.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.notifications_up.setObjectName("notifications_up")
-        self.notifications_oops_text = QtWidgets.QLabel(self.notifications_up)
-        self.notifications_oops_text.setGeometry(QtCore.QRect(10, 5, 731, 41))
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(18)
-        self.notifications_oops_text.setFont(font)
-        self.notifications_oops_text.setStyleSheet("QLabel {\n"
-"    color: #fff;\n"
-"}")
-        self.notifications_oops_text.setObjectName("notifications_oops_text")
-        self.notifications_close = QtWidgets.QPushButton(self.notifications_up)
-        self.notifications_close.setGeometry(QtCore.QRect(715, 10, 16, 16))
-        self.notifications_close.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.notifications_close.setStyleSheet("QPushButton {\n"
-"    background: transparent\n"
-"}")
-        self.notifications_close.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("icons/aki_close_notify.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.notifications_close.setIcon(icon5)
-        self.notifications_close.setIconSize(QtCore.QSize(13, 13))
-        self.notifications_close.setObjectName("notifications_close")
-        self.notifications_text = QtWidgets.QLabel(self.notifications_main_background)
-        self.notifications_text.setGeometry(QtCore.QRect(10, 58, 721, 16))
-        self.notifications_text.setStyleSheet("QLabel {\n"
-"    color: #fff\n"
-"}")
-        font = QtGui.QFont()
-        font.setFamily("Acrom")
-        font.setPointSize(10)
-        self.notifications_text.setFont(font)
-        self.notifications_text.setObjectName("notifications_text")
         Aki_main.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Aki_main)
@@ -608,20 +425,8 @@ class Ui_Aki_main(object):
         item.setText(_translate("Aki_main", "Pass"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
         self.btn_add_user.setText(_translate("Aki_main", "+"))
-        self.btn_remove_user.setText(_translate("Aki_main", "-"))
-        self.label_2.setText(_translate("Aki_main", "Создать новый логин"))
-        self.new_site_name.setPlaceholderText(_translate("Aki_main", "https://www.example.com"))
-        self.new_site_user.setPlaceholderText(_translate("Aki_main", "username"))
-        self.label_3.setText(_translate("Aki_main", "Адрес веб-сайта"))
-        self.label_4.setText(_translate("Aki_main", "Имя пользователя"))
-        self.new_site_pass.setPlaceholderText(_translate("Aki_main", "password"))
-        self.label_5.setText(_translate("Aki_main", "Пароль"))
-        self.reg_sign.setText(_translate("Aki_main", "Сохранить"))
-        self.reg_cancel.setText(_translate("Aki_main", "Отмена"))
         self.l_remove_row.setText(_translate("Aki_main", "Удалить данные"))
         self.remove_row.setPlaceholderText(_translate("Aki_main", "От 0 до бесконечности"))
         self.l_number_row.setText(_translate("Aki_main", "Номер строки"))
         self.remove_complete.setText(_translate("Aki_main", "Сохранить"))
         self.remove_cancel.setText(_translate("Aki_main", "Отмена"))
-        self.notifications_oops_text.setText(_translate("Aki_sign", "Упс! Мы столкнулись с некоторыми проблемами."))
-        self.notifications_text.setText(_translate("Aki_sign", "Тестовое сообщение. Пожалуйста, попробуйте ещё раз."))
