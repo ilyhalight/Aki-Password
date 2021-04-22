@@ -72,6 +72,7 @@ class SignWindow(QMainWindow):
     def initUi(self):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowTitle('Aki Password')
+        self.setWindowIcon(QIcon('ui/icons/password.png'))
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         # HIDE ELEMENTS
@@ -234,12 +235,15 @@ class MainWindow(QMainWindow):
     def initUi(self):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowTitle('Aki Password')
+        self.setWindowIcon(QIcon('ui/icons/password.png'))
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         # MAIN FRAME
         self.ui.notifications_close.setIcon(QtGui.QIcon("ui/icons/aki_close_notify.png"))
         self.ui.notifications_main_background.hide()
         self.ui.notifications_dark_background.hide()
+        self.ui.btn_copy_data.hide()
+        self.ui.btn_delete_user.hide()
 
         self.ui.img_logo.setIcon(QtGui.QIcon("ui/icons/aki_logo.png"))
         self.ui.btn_close.setIcon(QtGui.QIcon("ui/icons/aki_close.png"))
@@ -248,8 +252,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_delete_user.setIcon(QtGui.QIcon("ui/icons/aki_delete.png"))
         self.ui.btn_copy_data.setIcon(QtGui.QIcon("ui/icons/aki_copy.png"))
 
-
         self.ui.frame.hide()
+        self.ui.frame_remove.hide()
 
         item = self.ui.tableWidget.item(0, 0)
         item.setText('ui.sitename')
@@ -260,12 +264,17 @@ class MainWindow(QMainWindow):
 
 
         self.table_filling()
+        global rowcount
+        rowcount = self.ui.tableWidget.rowCount() // 3 + 1
 
         # UI FUNCTIONS
         self.ui.btn_close.clicked.connect(self.minimize)
         self.ui.reg_cancel.clicked.connect(self.hide_reg)
         self.ui.btn_add_user.clicked.connect(self.open_reg)
         self.ui.reg_sign.clicked.connect(self.add_user_to_table)
+        self.ui.remove_complete.clicked.connect(self.remove_complete)
+        self.ui.remove_cancel.clicked.connect(self.hide_remove)
+        self.ui.btn_remove_user.clicked.connect(self.open_remove)
 
         self.ui.notifications_close.clicked.connect(self.notify_close)
 
@@ -304,6 +313,61 @@ class MainWindow(QMainWindow):
             return sitepassword
         except:
             self.warn_notifications('Ошибка доступа к базе данных.')
+
+
+
+
+    def rewrite_sitename_in_database(self, sitenames = []):
+        global nickname
+        # try:
+        cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
+        sql_data = cursor.fetchall()
+        for row in sql_data:
+            accountid = row[0]
+        cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = 'default' WHERE `id` = '{accountid}'")
+        for site_name in sitenames:
+            sitename = self.select_sitename_from_database()
+            if sitename == 'default':
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{site_name}' WHERE `id` = '{accountid}'")
+            else:
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{sitename + '/|/' + site_name}' WHERE `id` = '{accountid}'")
+        # except:
+        #     self.warn_notifications('Ошибка доступа к базе данных.')
+
+    def rewrite_sitelogin_in_database(self, sitelogins = []):
+        global nickname
+        # try:
+        cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
+        sql_data = cursor.fetchall()
+        for row in sql_data:
+            accountid = row[0]
+        cursor.execute (f"UPDATE `aki_accounts` SET `sitelogin` = 'default' WHERE `id` = '{accountid}'")
+        for site_login in sitelogins:
+            sitelogin = self.select_sitelogin_from_database()
+            if sitelogin == 'default':
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitelogin` = '{site_login}' WHERE `id` = '{accountid}'")
+            else:
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitelogin` = '{sitelogin + '/|/' + site_login}' WHERE `id` = '{accountid}'")
+        # except:
+        #     self.warn_notifications('Ошибка доступа к базе данных.')
+
+    def rewrite_sitepassword_in_database(self, sitepasswords = []):
+        global nickname
+        # try:
+        cursor.execute(f"SELECT id FROM aki_accounts WHERE login = %s", (nickname))
+        sql_data = cursor.fetchall()
+        for row in sql_data:
+            accountid = row[0]
+        cursor.execute (f"UPDATE `aki_accounts` SET `sitepassword` = 'default' WHERE `id` = '{accountid}'")
+        for site_password in sitepasswords:
+            sitepassword = self.select_sitepassword_from_database()
+            if sitepassword == 'default':
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitepassword` = '{site_password}' WHERE `id` = '{accountid}'")
+            else:
+                cursor.execute (f"UPDATE `aki_accounts` SET `sitepassword` = '{sitepassword + '/|/' + site_password}' WHERE `id` = '{accountid}'")
+        # except:
+        #     self.warn_notifications('Ошибка доступа к базе данных.')
+
 
     def table_filling(self):
         global nickname
@@ -370,6 +434,7 @@ class MainWindow(QMainWindow):
         else:
             try:
                 global nickname
+                # global rowcount
                 sitename = self.select_sitename_from_database()
                 sitelogin = self.select_sitelogin_from_database()
                 sitepassword = self.select_sitepassword_from_database()
@@ -380,11 +445,52 @@ class MainWindow(QMainWindow):
                     if sitename == 'default' and sitelogin == 'default' and sitepassword == 'default':
                         cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{site_name}', `sitelogin` = '{site_user}', `sitepassword` = '{site_pass}' WHERE `id` = '{accountid}'")
                     else:
-                        cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{sitename + '/|/' +site_name}', `sitelogin` = '{sitelogin + '/|/' + site_user}', `sitepassword` = '{sitepassword + '/|/' + site_pass}' WHERE `id` = '{accountid}'")
-                    # * Оно работает но не совсем так как надо. 2-Й комментарий пока наиболее рабочий метод (добавляет только 1 значение)
+                        cursor.execute (f"UPDATE `aki_accounts` SET `sitename` = '{sitename + '/|/' + site_name}', `sitelogin` = '{sitelogin + '/|/' + site_user}', `sitepassword` = '{sitepassword + '/|/' + site_pass}' WHERE `id` = '{accountid}'")
                     connection.commit()
+                    # rowcount = rowcount + 1
                     self.notifications('Успех.', 'Вы успешно добавили аккаунт')
                     self.hide_reg()
+            except:
+                connection.rollback()
+                self.warn_notifications('Произошла неизвестная ошибка.')
+
+
+    def remove_complete(self):
+        number_row = int(self.ui.remove_row.text())
+        # global rowcount
+        # rowcountenv = rowcount
+        if number_row < 0:
+            self.warn_notifications('Введенное число не может быть меньше 0.')
+        # elif number_row > rowcountenv:
+        elif number_row > self.ui.tableWidget.rowCount():
+            print(self.ui.tableWidget.rowCount())
+            print(rowcount)
+            self.warn_notifications('Введенное число не может превышать количество строк.')
+        else:
+            try:
+                # print(rowcountenv)
+                # print(rowcount)
+                sitenamedb = self.select_sitename_from_database()
+                sitelogindb = self.select_sitelogin_from_database()
+                sitepassworddb = self.select_sitepassword_from_database()
+
+                sitename = sitenamedb.split('/|/')
+                sitelogin = sitelogindb.split('/|/')
+                sitepassword = sitepassworddb.split('/|/')
+                # print(sitename)
+                # print(sitelogin)
+                sitename.pop(number_row)
+                sitelogin.pop(number_row)
+                sitepassword.pop(number_row)
+                # print(sitename)
+                # print(sitelogin)
+                self.rewrite_sitename_in_database(sitename)
+                self.rewrite_sitelogin_in_database(sitelogin)
+                self.rewrite_sitepassword_in_database(sitepassword)
+                connection.commit()
+                # rowcount = rowcountenv - 1
+                self.notifications('Успех.', f'Вы успешно удалили {number_row} строку')
+                self.hide_remove()
             except:
                 connection.rollback()
                 self.warn_notifications('Произошла неизвестная ошибка.')
@@ -423,8 +529,16 @@ class MainWindow(QMainWindow):
         self.ui.frame.hide()
         self.table_filling()
 
+    def hide_remove(self):
+        self.ui.remove_row.setText('')
+        self.ui.frame_remove.hide()
+        self.table_filling()
+
     def open_reg(self):
         self.ui.frame.show()
+
+    def open_remove(self):
+        self.ui.frame_remove.show()
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
@@ -468,6 +582,7 @@ class SplashScreen(QMainWindow):
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowTitle('Loading...')
+        self.setWindowIcon(QIcon('ui/icons/password.png'))
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         # MAIN FRAME
