@@ -1,4 +1,4 @@
-<h1 align = center> Aki Password (not adapted for different screen resolutions)</h1>
+<h1 align = center> Aki Password</h1>
 
 <h4 align="center">Simple password manager.</h4>
 
@@ -23,6 +23,10 @@
 </p>
 
 # Overview
+
+### ⚠ Not Secured
+### ⚠ Not adapted for different screen resolutions
+
 
 Aki Password is a simple password manager where you can safely store your data.
 ![Passwords menu](https://github.com/ilyhalight/Aki-Password/blob/master/screenshots/screenshot_main.png) 
